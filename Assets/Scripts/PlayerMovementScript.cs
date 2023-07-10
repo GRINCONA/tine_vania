@@ -11,11 +11,15 @@ public class PlayerMovementScript : MonoBehaviour
     Rigidbody2D playerRB;
     SpriteRenderer playerSprite;
 
+    Animator myAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
         playerRB = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
+        myAnimator = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -26,21 +30,34 @@ public class PlayerMovementScript : MonoBehaviour
         
     }
 
-    void OnMove(InputValue value){
-
+    void OnMove(InputValue value)
+    {
         moveInput = value.Get<Vector2>();
+        FlipPlayer(moveInput.x);
+    }
 
-        Debug.Log(moveInput);
-
-        if(moveInput.x < 0f){
+    private void FlipPlayer(float moveValue)
+    {
+        if (moveValue < 0f)
+        {
             playerSprite.flipX = true;
-        }else if(moveInput.x > 0){
+            myAnimator.SetBool("isRunning", true);
+        }
+        else if (moveValue > 0)
+        {
             playerSprite.flipX = false;
+            myAnimator.SetBool("isRunning", true);
+        }
+        else
+        {
+            myAnimator.SetBool("isRunning", false);
         }
     }
 
     void Run(){
+
         Vector2 playerVelocity = new Vector2(moveInput.x * runSpeed, playerRB.velocity.y);
         playerRB.velocity = playerVelocity;
+
     }
 }
