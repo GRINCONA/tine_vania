@@ -27,10 +27,12 @@ public class PlayerMovementScript : MonoBehaviour
     }
 
     void OnMove(InputValue value){
+
         moveInput = value.Get<Vector2>();
+
         Debug.Log(moveInput);
 
-         if(moveInput.x < 0f){
+        if(moveInput.x < 0f){
             playerSprite.flipX = true;
         }else if(moveInput.x > 0){
             playerSprite.flipX = false;
