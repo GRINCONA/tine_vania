@@ -83,6 +83,7 @@ public class PlayerMovementScript : MonoBehaviour
 
         if(!myCapsule.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
             playerRB.gravityScale = gravitySacaleAtStart;
+            myAnimator.SetBool("isClimbing", false);
             return;
         }
 
@@ -90,6 +91,10 @@ public class PlayerMovementScript : MonoBehaviour
 
         Vector2 climbVelocity = new Vector2( playerRB.velocity.x, moveInput.y * climbSpeed);
         playerRB.velocity = climbVelocity;
+
+        if(playerRB.velocity.y != 0f){
+            myAnimator.SetBool("isClimbing", true);
+        }
 
     }
 }
