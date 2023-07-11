@@ -221,7 +221,7 @@ GameObject:
   - component: {fileID: 735491187}
   - component: {fileID: 735491186}
   - component: {fileID: 735491185}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Platform
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7662,14 +7662,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1279621605, guid: 826061f4093e9016aad295e541bfe1fe, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1279621607, guid: 826061f4093e9016aad295e541bfe1fe, type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 8628727462338273849, guid: 826061f4093e9016aad295e541bfe1fe, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -7717,10 +7709,6 @@ PrefabInstance:
     - target: {fileID: 8628727462338273850, guid: 826061f4093e9016aad295e541bfe1fe, type: 3}
       propertyPath: m_Name
       value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 8628727462338273855, guid: 826061f4093e9016aad295e541bfe1fe, type: 3}
-      propertyPath: m_FlipX
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 826061f4093e9016aad295e541bfe1fe, type: 3}

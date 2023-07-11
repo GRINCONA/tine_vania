@@ -11,6 +11,7 @@ public class PlayerMovementScript : MonoBehaviour
     Vector2 moveInput;
     Rigidbody2D playerRB;
     SpriteRenderer playerSprite;
+    CapsuleCollider2D myCapsule;
 
     Animator myAnimator;
 
@@ -20,7 +21,7 @@ public class PlayerMovementScript : MonoBehaviour
         playerRB = GetComponent<Rigidbody2D>();
         playerSprite = GetComponent<SpriteRenderer>();
         myAnimator = GetComponent<Animator>();
-
+        myCapsule = GetComponent<CapsuleCollider2D>();
     }
 
     // Update is called once per frame
@@ -39,9 +40,15 @@ public class PlayerMovementScript : MonoBehaviour
 
     void OnJump(InputValue value){
 
+        if(!myCapsule.IsTouchingLayers(LayerMask.GetMask("Ground"))){
+            return;
+        }
+
         if(value.isPressed){
             playerRB.velocity += new Vector2(0f, jumpSpeed);
         }
+
+
     }
 
     private void FlipPlayer(float moveValue)
