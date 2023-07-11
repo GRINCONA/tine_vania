@@ -13,6 +13,7 @@ public class PlayerMovementScript : MonoBehaviour
     Rigidbody2D playerRB;
     SpriteRenderer playerSprite;
     CapsuleCollider2D myCapsule;
+    float gravitySacaleAtStart;
 
     Animator myAnimator;
 
@@ -23,6 +24,7 @@ public class PlayerMovementScript : MonoBehaviour
         playerSprite = GetComponent<SpriteRenderer>();
         myAnimator = GetComponent<Animator>();
         myCapsule = GetComponent<CapsuleCollider2D>();
+        gravitySacaleAtStart = playerRB.gravityScale;
     }
 
     // Update is called once per frame
@@ -79,11 +81,12 @@ public class PlayerMovementScript : MonoBehaviour
 
     void ClimbLadder(){
 
-          if(!myCapsule.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+        if(!myCapsule.IsTouchingLayers(LayerMask.GetMask("Climbing"))){
+            playerRB.gravityScale = gravitySacaleAtStart;
             return;
         }
 
-        Debug.Log("Climb");
+        playerRB.gravityScale = 0f;
 
         Vector2 climbVelocity = new Vector2( playerRB.velocity.x, moveInput.y * climbSpeed);
         playerRB.velocity = climbVelocity;
